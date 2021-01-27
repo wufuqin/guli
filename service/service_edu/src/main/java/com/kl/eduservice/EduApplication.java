@@ -1,7 +1,8 @@
-package com.ks.eduservice;
+package com.kl.eduservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
 /**
  * 教师模块启动类
@@ -10,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @SuppressWarnings("all")
 @SpringBootApplication
+@ComponentScan(basePackages = {"com.kl"})
 public class EduApplication {
 
     public static void main(String[] args) {
