@@ -26,6 +26,13 @@
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
 
+        <!--common_utils-->
+        <dependency>
+            <groupId>com.ks</groupId>
+            <artifactId>common_utils</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
         <!--<dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-ribbon</artifactId>
