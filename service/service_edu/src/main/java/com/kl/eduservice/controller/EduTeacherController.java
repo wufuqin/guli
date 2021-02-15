@@ -27,6 +27,7 @@ import java.util.List;
 @Api(description="讲师管理")
 @RestController
 @RequestMapping("/eduservice/teacher")
+@CrossOrigin
 public class EduTeacherController {
 
     @Autowired
@@ -50,7 +51,9 @@ public class EduTeacherController {
      */
     @ApiOperation(value = "根据ID逻辑删除讲师")
     @DeleteMapping("{id}")
-    public Result removeTeacherById(@ApiParam(name = "id", value = "讲师ID", required = true) @PathVariable String id){
+    public Result removeTeacherById(
+            @ApiParam(name = "id", value = "讲师ID", required = true)
+            @PathVariable String id){
         return eduTeacherService.removeById(id) ? Result.success().message("删除成功") : Result.error().message("删除失败");
     }
 
@@ -132,11 +135,10 @@ public class EduTeacherController {
      */
     @ApiOperation(value = "新增讲师")
     @PostMapping("addTeacher")
-    public Result save(
+    public Result addTeacher(
             @ApiParam(name = "teacher", value = "讲师对象", required = true)
             @RequestBody EduTeacher teacher){
-        eduTeacherService.save(teacher);
-        return Result.success().message("添加成功");
+        return eduTeacherService.save(teacher) ? Result.success().message("添加成功") : Result.error().message("添加失败");
     }
 
     /**
@@ -145,8 +147,8 @@ public class EduTeacherController {
      * @return
      */
     @ApiOperation(value = "根据讲师id进行查询")
-    @GetMapping("getTeacher/{id}")
-    public Result getTeacher(
+    @GetMapping("getTeacherById/{id}")
+    public Result getTeacherById(
             @ApiParam(name = "id", value = "讲师id", required = true)
             @PathVariable String id) {
         EduTeacher eduTeacher = eduTeacherService.getById(id);
@@ -154,7 +156,7 @@ public class EduTeacherController {
     }
 
     /**
-     * 讲师修改功能
+     * 根据id修改讲师信息
      * @param eduTeacher
      * @return
      */
@@ -167,25 +169,3 @@ public class EduTeacherController {
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
